@@ -56,13 +56,14 @@ sections:
 
   - title: Doctoral students
     members:
-      - name: Lena Okafor
-        role: PhD student, since 2022
+      - name: Akhil Krishnan
+        role: PhD student, since 2025
         bio: >-
-          Works on pattern formation on curved and growing surfaces.
+          Develops novel numerical algorithms for multiphase incompressible flows.
         links:
-          email: l.okafor@example.edu
-          website: https://example.com
+          email: kakhil@iisc.ac.in
+#          github: anakhilkrishnan
+#          website: https://example.com
       - name: Rahul Menon
         role: PhD student, since 2023
         bio: >-
