@@ -1,0 +1,39 @@
+---
+layout: page
+title: Software
+permalink: /software/
+description: Open-source simulation and analysis software developed by the Computational Dynamics Lab.
+intro: >-
+  The solvers and analysis tools behind our papers are open source. Bug
+  reports and pull requests are welcome on GitHub.
+---
+<div class="container">
+  {%- for tool in site.data.software %}
+  <article class="tool{% if tool.image %} tool--with-image{% endif %}" id="{{ tool.name | slugify }}">
+    <div class="tool__body">
+      <h2 class="tool__name">{{ tool.name }}</h2>
+      <div class="prose">{% include markdown.html text=tool.description %}</div>
+      {%- if tool.install %}
+      <div class="install">
+        <code>{{ tool.install }}</code>
+        <button type="button" class="copy-button" data-copy>{% include icon.html name="copy" %}<span aria-live="polite">Copy</span></button>
+      </div>
+      {%- endif %}
+      <dl class="facts facts--inline">
+        {%- if tool.language %}<div class="facts__row"><dt>Language</dt><dd>{{ tool.language }}</dd></div>{% endif %}
+        {%- if tool.license %}<div class="facts__row"><dt>License</dt><dd>{{ tool.license }}</dd></div>{% endif %}
+        {%- if tool.status %}<div class="facts__row"><dt>Status</dt><dd>{{ tool.status }}</dd></div>{% endif %}
+        {%- if tool.paper %}{% assign pub = site.data.publications | where: "id", tool.paper | first %}{% if pub %}
+        <div class="facts__row"><dt>Cite</dt><dd><a href="{{ '/publications/' | relative_url }}#{{ pub.id }}">{{ pub.title }}</a></dd></div>{% endif %}{% endif %}
+      </dl>
+      <div class="project__links">
+        {%- if tool.repo %}<a class="button button--outline" href="{{ tool.repo }}">Source code</a>{% endif %}
+        {%- if tool.docs %}<a class="button button--outline" href="{{ tool.docs }}">Documentation</a>{% endif %}
+      </div>
+    </div>
+    {%- if tool.image %}
+    <div class="tool__image"><img src="{{ tool.image | relative_url }}" alt="Example output from {{ tool.name }}" loading="lazy" decoding="async"></div>
+    {%- endif %}
+  </article>
+  {%- endfor %}
+</div>

@@ -1,0 +1,37 @@
+{%- comment -%}
+  The main figure for a research project.
+  Usage: {% include media.html media=project.media caption=project.caption %}
+  Local videos and images open full size in the viewer (see lightbox.html).
+{%- endcomment -%}
+{%- assign m = include.media -%}
+{%- assign label = m.alt | default: include.caption | default: "Figure" | strip_newlines | escape -%}
+{%- if m.type == "youtube" -%}
+<div class="embed">
+  <iframe src="https://www.youtube-nocookie.com/embed/{{ m.id }}?rel=0" title="{{ label }}" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+{%- elsif m.type == "vimeo" -%}
+<div class="embed">
+  <iframe src="https://player.vimeo.com/video/{{ m.id }}?dnt=1" title="{{ label }}" loading="lazy"
+    allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+</div>
+{%- elsif m.type == "video" -%}
+<button type="button" class="media-open" data-viewer="video"
+  data-src="{{ m.src | relative_url }}"{% if m.poster %} data-poster="{{ m.poster | relative_url }}"{% endif %}
+  data-caption="{{ include.caption | strip_newlines | escape }}" data-alt="{{ label }}"
+  aria-label="Play larger: {{ label }}">
+  <video class="media" muted loop playsinline preload="none" data-play-in-view{% if m.aspect %} style="aspect-ratio: {{ m.aspect }}"{% endif %}
+    {% if m.poster %}poster="{{ m.poster | relative_url }}"{% endif %} aria-hidden="true">
+    <source src="{{ m.src | relative_url }}" type="video/mp4">
+  </video>
+  <span class="media-open__hint">{% include icon.html name="expand" %}<span>Enlarge</span></span>
+</button>
+{%- else -%}
+<button type="button" class="media-open" data-viewer="image"
+  data-src="{{ m.src | relative_url }}" data-caption="{{ include.caption | strip_newlines | escape }}" data-alt="{{ label }}"
+  aria-label="Enlarge: {{ label }}">
+  <img class="media" src="{{ m.src | relative_url }}" alt="" loading="lazy" decoding="async">
+  <span class="media-open__hint">{% include icon.html name="expand" %}<span>Enlarge</span></span>
+</button>
+{%- endif -%}

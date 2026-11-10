@@ -1,0 +1,30 @@
+{%- comment -%} One person. Usage: {% include person.html person=member index=forloop.index feature=section.feature %} {%- endcomment -%}
+{%- assign p = include.person -%}
+{%- assign name_parts = p.name | split: " " -%}
+{%- assign tone = p.name | size | modulo: 4 -%}
+<article class="person{% if include.feature %} person--feature{% endif %}">
+  <div class="person__photo{% unless p.photo %} person__photo--initials tone-{{ tone }}{% endunless %}">
+    {%- if p.photo -%}
+    <img src="{{ p.photo | relative_url }}" alt="Portrait of {{ p.name }}" loading="lazy" decoding="async">
+    {%- else -%}
+    <span aria-hidden="true">{{ name_parts.first | slice: 0 }}{% if name_parts.size > 1 %}{{ name_parts.last | slice: 0 }}{% endif %}</span>
+    {%- endif -%}
+  </div>
+  <div class="person__body">
+    {%- if include.feature %}<h3 class="person__name person__name--large">{{ p.name }}</h3>{% else %}<h3 class="person__name">{{ p.name }}</h3>{% endif %}
+    {%- if p.role %}<p class="person__role">{{ p.role }}</p>{% endif %}
+    {%- if p.bio %}<div class="person__bio">{% include markdown.html text=p.bio %}</div>{% endif %}
+    {%- assign l = p.links -%}
+    {%- if l %}
+    <ul class="person__links" aria-label="Links for {{ p.name }}">
+      {%- if l.email %}<li><a href="mailto:{{ l.email }}">Email</a></li>{% endif -%}
+      {%- if l.website %}<li><a href="{{ l.website }}">Website</a></li>{% endif -%}
+      {%- if l.scholar %}<li><a href="{{ l.scholar }}">Google Scholar</a></li>{% endif -%}
+      {%- if l.orcid %}<li><a href="https://orcid.org/{{ l.orcid }}">ORCID</a></li>{% endif -%}
+      {%- if l.github %}<li><a href="https://github.com/{{ l.github }}">GitHub</a></li>{% endif -%}
+      {%- if l.linkedin %}<li><a href="{{ l.linkedin }}">LinkedIn</a></li>{% endif -%}
+      {%- if l.cv %}<li><a href="{{ l.cv | relative_url }}">CV</a></li>{% endif -%}
+    </ul>
+    {%- endif %}
+  </div>
+</article>

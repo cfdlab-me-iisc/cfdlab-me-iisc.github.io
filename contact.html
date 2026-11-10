@@ -1,0 +1,54 @@
+---
+layout: page
+title: Contact
+permalink: /contact/
+description: How to reach and visit the Computational Dynamics Lab.
+# Text shown beside the contact details. Markdown works.
+notes: |
+  ### Visiting us
+  The Mathematics Building is a ten-minute walk from the central train
+  station. Take the lift to the fourth floor and turn left; the lab is at the
+  end of the corridor. Visitors should sign in at the main reception.
+
+  ### Open positions
+  We are recruiting a PhD student in computational fluid dynamics to start in
+  autumn 2027. Applications from postdocs are welcome at any time. Email us a
+  CV and a short description of your research interests.
+---
+{%- assign c = site.contact %}
+<div class="container contact">
+  <div class="contact__details">
+    <dl class="contact__list">
+      {%- if c.email %}<div><dt>Email</dt><dd><a href="mailto:{{ c.email }}">{{ c.email }}</a></dd></div>{% endif %}
+      {%- if c.phone %}<div><dt>Phone</dt><dd><a href="tel:{{ c.phone | remove: ' ' }}">{{ c.phone }}</a></dd></div>{% endif %}
+      {%- if c.address %}<div><dt>Address</dt><dd><address>{{ c.address | strip | newline_to_br }}</address></dd></div>{% endif %}
+    </dl>
+    {%- if page.notes %}
+    <div class="prose contact__notes">{% include markdown.html text=page.notes %}</div>
+    {%- endif %}
+  </div>
+
+  {%- if c.map %}
+  {%- assign span = c.map.zoom_span | default: 0.006 %}
+  {%- assign w = c.map.lon | minus: span %}{% assign e = c.map.lon | plus: span %}
+  {%- assign s = c.map.lat | minus: span %}{% assign n = c.map.lat | plus: span %}
+  <figure class="contact__map">
+    <iframe title="Map showing the lab's location" loading="lazy"
+      src="https://www.openstreetmap.org/export/embed.html?bbox={{ w }}%2C{{ s }}%2C{{ e }}%2C{{ n }}&amp;layer=mapnik&amp;marker={{ c.map.lat }}%2C{{ c.map.lon }}"></iframe>
+    <figcaption class="caption"><a href="https://www.openstreetmap.org/?mlat={{ c.map.lat }}&amp;mlon={{ c.map.lon }}#map=17/{{ c.map.lat }}/{{ c.map.lon }}">Open a larger map</a></figcaption>
+  </figure>
+  {%- endif %}
+</div>
+
+{%- if c.form_endpoint and c.form_endpoint != "" %}
+<section class="container contact-form-section" aria-labelledby="form-title">
+  <h2 class="section__title" id="form-title">Send us a message</h2>
+  <form class="contact-form" action="{{ c.form_endpoint }}" method="POST">
+    <label>Name<input type="text" name="name" autocomplete="name" required></label>
+    <label>Email<input type="email" name="email" autocomplete="email" required></label>
+    <label class="contact-form__wide">Message<textarea name="message" rows="6" required></textarea></label>
+    <button type="submit" class="button button--solid">Send message</button>
+  </form>
+</section>
+{%- endif %}
+

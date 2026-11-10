@@ -1,0 +1,15 @@
+# Latest news, newest first. The home page shows the first five.
+# `text` accepts Markdown, including links.
+
+- date: 2026-10-14
+  text: Lena Okafor's paper on Turing patterns on curved surfaces is out in [Physical Review E](/publications/#okafor2026curved).
+- date: 2026-09-02
+  text: Welcome to Jonas Weber, who joins the lab as a research assistant.
+- date: 2026-07-18
+  text: Tomás Ibarra's work on absorbing layers received the best paper award at ICCS 2026.
+- date: 2026-05-30
+  text: We are hiring a PhD student in computational fluid dynamics. See the [Contact page](/contact/) for how to apply.
+- date: 2026-02-11
+  text: Version 2.0 of [morphon](/software/) adds support for triangulated surfaces.
+- date: 2025-11-03
+  text: Aiko Tanaka gave an invited talk on chaotic mixing at the APS Division of Fluid Dynamics meeting.

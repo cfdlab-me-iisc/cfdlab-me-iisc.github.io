@@ -1,0 +1,9 @@
+{%- comment -%}
+  Renders Markdown and makes site-relative links (href="/...", src="/...")
+  work when the site lives in a subfolder (GitHub Pages project sites).
+  Usage: {% include markdown.html text=page.intro %}
+{%- endcomment -%}
+{%- assign _href = 'href="' | append: site.baseurl | append: '/' -%}
+{%- assign _src = 'src="' | append: site.baseurl | append: '/' -%}
+{%- assign _md = include.text | markdownify | replace: 'href="/', _href | replace: 'src="/', _src -%}
+{%- if include.inline -%}{{ _md | remove: '<p>' | remove: '</p>' | strip }}{%- else -%}{{ _md }}{%- endif -%}

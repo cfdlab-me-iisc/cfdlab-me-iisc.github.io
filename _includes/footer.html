@@ -1,0 +1,29 @@
+<footer class="site-footer">
+  <div class="container site-footer__grid">
+    <div class="site-footer__about">
+      <p class="site-footer__title">{{ site.title }}</p>
+      <p>{{ site.institution }}</p>
+      {%- if site.contact.address %}
+      <address>{{ site.contact.address | strip | newline_to_br }}</address>
+      {%- endif %}
+    </div>
+    <nav aria-label="Footer">
+      <ul class="site-footer__links">
+        {%- for link in site.data.navigation %}
+        <li><a href="{{ link.url | relative_url }}">{{ link.title }}</a></li>
+        {%- endfor %}
+      </ul>
+    </nav>
+    <ul class="site-footer__links">
+      {%- if site.contact.email %}<li><a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a></li>{% endif -%}
+      {%- if site.social.github %}<li><a href="{{ site.social.github }}">GitHub</a></li>{% endif -%}
+      {%- if site.social.scholar %}<li><a href="{{ site.social.scholar }}">Google Scholar</a></li>{% endif -%}
+      {%- if site.social.youtube %}<li><a href="{{ site.social.youtube }}">YouTube</a></li>{% endif -%}
+      {%- if site.social.bluesky %}<li><a href="{{ site.social.bluesky }}">Bluesky</a></li>{% endif -%}
+      {%- if site.social.linkedin %}<li><a href="{{ site.social.linkedin }}">LinkedIn</a></li>{% endif -%}
+    </ul>
+  </div>
+  <div class="container site-footer__meta">
+    <p>© {{ site.time | date: "%Y" }} {{ site.title }}. Built with Jekyll and hosted on GitHub Pages.</p>
+  </div>
+</footer>

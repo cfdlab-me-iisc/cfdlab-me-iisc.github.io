@@ -1,0 +1,28 @@
+{%- comment -%} One publication. Usage: {% include publication.html pub=pub %} {%- endcomment -%}
+{%- assign pub = include.pub -%}
+{%- capture primary -%}{% if pub.url %}{{ pub.url | relative_url }}{% elsif pub.doi %}https://doi.org/{{ pub.doi }}{% elsif pub.arxiv %}https://arxiv.org/abs/{{ pub.arxiv }}{% elsif pub.pdf %}{{ pub.pdf | relative_url }}{% endif %}{%- endcapture -%}
+{%- assign search_text = pub.title | append: " " | append: pub.authors | append: " " | append: pub.venue | append: " " | append: pub.year | remove: "*" | downcase | escape -%}
+<li class="pub" id="{{ pub.id }}" data-pub data-type="{{ pub.type }}" data-year="{{ pub.year }}" data-search="{{ search_text }}">
+  <h3 class="pub__title">{% if primary != "" %}<a href="{{ primary }}">{{ pub.title }}</a>{% else %}{{ pub.title }}{% endif %}</h3>
+  <p class="pub__authors">{% include markdown.html text=pub.authors inline=true %}</p>
+  <p class="pub__venue"><cite>{{ pub.venue }}</cite>{% if pub.details %}, {{ pub.details }}{% endif %} ({{ pub.year }})</p>
+  {%- if pub.note %}<p class="pub__note">{{ pub.note }}</p>{% endif %}
+  {%- unless include.compact %}
+  <ul class="pub__links">
+    {%- if pub.pdf %}<li><a class="tag-link" href="{{ pub.pdf | relative_url }}">PDF</a></li>{% endif -%}
+    {%- if pub.doi %}<li><a class="tag-link" href="https://doi.org/{{ pub.doi }}">DOI</a></li>{% endif -%}
+    {%- if pub.arxiv %}<li><a class="tag-link" href="https://arxiv.org/abs/{{ pub.arxiv }}">arXiv</a></li>{% endif -%}
+    {%- if pub.code %}<li><a class="tag-link" href="{{ pub.code | relative_url }}">Code</a></li>{% endif -%}
+    {%- if pub.data %}<li><a class="tag-link" href="{{ pub.data | relative_url }}">Data</a></li>{% endif -%}
+    {%- if pub.video %}<li><a class="tag-link" href="{{ pub.video | relative_url }}">Video</a></li>{% endif -%}
+    {%- if pub.slides %}<li><a class="tag-link" href="{{ pub.slides | relative_url }}">Slides</a></li>{% endif -%}
+    {%- if pub.bibtex %}<li><button type="button" class="tag-link" aria-expanded="false" aria-controls="bib-{{ pub.id }}" data-bibtex-toggle>BibTeX</button></li>{% endif -%}
+  </ul>
+  {%- if pub.bibtex %}
+  <div class="bibtex" id="bib-{{ pub.id }}" hidden>
+    <pre><code>{{ pub.bibtex | strip | escape }}</code></pre>
+    <button type="button" class="copy-button" data-copy>{% include icon.html name="copy" %}<span aria-live="polite">Copy BibTeX</span></button>
+  </div>
+  {%- endif %}
+  {%- endunless %}
+</li>

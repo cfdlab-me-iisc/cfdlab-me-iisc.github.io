@@ -1,0 +1,59 @@
+---
+layout: page
+title: Publications
+permalink: /publications/
+description: Journal articles, conference papers, preprints and theses from the Computational Dynamics Lab.
+intro: >-
+  Lab members are shown in bold. Search by title, author or journal, or
+  narrow the list by type and year. An up-to-date list is also on
+  [Google Scholar](https://scholar.google.com/).
+---
+{%- assign pubs = site.data.publications %}
+{%- assign groups = pubs | group_by: "year" | sort: "name" | reverse %}
+<div class="container publications" data-pubs>
+  <div class="pub-filters" role="search" aria-label="Filter publications">
+    <label class="search-field">
+      <span class="visually-hidden">Search publications</span>
+      {% include icon.html name="search" %}
+      <input type="search" placeholder="Search titles, authors, journals" autocomplete="off" data-pub-search>
+    </label>
+
+    <div class="type-filter" role="group" aria-label="Publication type">
+      <button type="button" class="chip" aria-pressed="true" data-pub-type="all">All</button>
+      {%- for t in site.publication_types %}
+      {%- assign n = pubs | where: "type", t[0] | size %}
+      {%- if n > 0 %}
+      <button type="button" class="chip" aria-pressed="false" data-pub-type="{{ t[0] }}">{{ t[1] }} <span class="chip__count">{{ n }}</span></button>
+      {%- endif %}
+      {%- endfor %}
+    </div>
+
+    <label class="year-field">
+      <span>Year</span>
+      <select data-pub-year>
+        <option value="all">All years</option>
+        {%- for g in groups %}
+        <option value="{{ g.name }}">{{ g.name }}</option>
+        {%- endfor %}
+      </select>
+    </label>
+  </div>
+
+  <p class="pub-count" aria-live="polite" data-pub-count>{{ pubs.size }} publications</p>
+
+  {%- for g in groups %}
+  <section class="pub-year" data-pub-group aria-labelledby="year-{{ g.name }}">
+    <h2 class="pub-year__label" id="year-{{ g.name }}">{{ g.name }}</h2>
+    <ol class="pub-list">
+      {%- for pub in g.items %}
+      {% include publication.html pub=pub %}
+      {%- endfor %}
+    </ol>
+  </section>
+  {%- endfor %}
+
+  <div class="empty-state" data-pub-empty hidden>
+    <p>No publications match these filters.</p>
+    <button type="button" class="button button--outline" data-pub-reset>Show all publications</button>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+# ----------------------------------------------------------------------------
+#  Software. Each entry gets its own block on the Software page.
+#
+#  name         Package or project name
+#  description  One or two sentences (Markdown allowed)
+#  install      Optional install command; shown with a copy button
+#  language, license, status   Optional short facts
+#  repo, docs, paper           Optional links (paper = an id from publications.yml)
+#  image        Optional screenshot or output figure
+# ----------------------------------------------------------------------------
+
+- name: morphon
+  description: >-
+    GPU solver for reaction–diffusion systems on regular grids and triangulated
+    surfaces. Runs parameter sweeps of thousands of simulations in a single batch.
+  install: pip install morphon
+  language: Python, CUDA
+  license: MIT
+  status: Actively maintained
+  repo: https://github.com/your-org/morphon
+  docs: https://example.com/morphon
+  paper: halvorsen2025atlas
+  image: /assets/research/rd-mazes.jpg
+
+- name: gyreflow
+  description: >-
+    Toolkit for Lagrangian transport analysis: particle advection, finite-time
+    Lyapunov exponents and coherent-structure detection from gridded or
+    scattered velocity data.
+  install: pip install gyreflow
+  language: Python
+  license: BSD-3-Clause
+  status: Actively maintained
+  repo: https://github.com/your-org/gyreflow
+  docs: https://example.com/gyreflow
+  paper: asante2026sparse
+  image: /assets/research/ftle.jpg
+
+- name: WaveBox.jl
+  description: >-
+    High-order finite-difference wave solvers with perfectly matched layers,
+    written in Julia.
+  install: "julia> ] add WaveBox"
+  language: Julia
+  license: MIT
+  status: Research code, limited support
+  repo: https://github.com/your-org/WaveBox.jl
+  paper: ibarra2026pml

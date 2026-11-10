@@ -1,0 +1,14 @@
+# Main menu, in order. Delete the Software entry if your group has none
+# (and delete software.html too).
+- title: Home
+  url: /
+- title: Research
+  url: /research/
+- title: Publications
+  url: /publications/
+- title: People
+  url: /people/
+- title: Software
+  url: /software/
+- title: Contact
+  url: /contact/

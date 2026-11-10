@@ -1,0 +1,102 @@
+# ----------------------------------------------------------------------------
+#  Site configuration
+#  Most day-to-day edits happen in the _data/ folder (people, publications,
+#  research, software, news). This file holds settings that rarely change.
+#  After editing this file, restart `jekyll serve` (it is not live-reloaded).
+# ----------------------------------------------------------------------------
+
+title: Computational Dynamics Lab
+# short_title: CDL   # optional; replaces the title in the header on narrow phones
+description: >-
+  We build simulations and theory for pattern formation, wave propagation
+  and transport in complex systems.
+institution: Department of Applied Mathematics, Example University
+lang: en
+
+# GitHub Pages addresses
+#   Project site  → https://<user>.github.io/<repo>/  : url = https://<user>.github.io, baseurl = /<repo>
+#   User/org site → https://<user>.github.io/         : url = https://<user>.github.io, baseurl = ""
+#   Custom domain → https://lab.example.edu/          : url = https://lab.example.edu,  baseurl = ""
+url: "https://cfdlab-me-iisc.github.io"
+baseurl: ""
+
+# Image used when a page is shared on social media (1200×630 works best)
+og_image: /assets/img/og-image.jpg
+
+# Link colour and focus colour. Leave blank to keep the defaults in main.css.
+accent: "#136F73"
+accent_dark: "#6FD3C7"
+
+# ----------------------------------------------------------------------------
+#  Home page hero
+# ----------------------------------------------------------------------------
+hero:
+  video: /assets/video/hero.mp4          # MP4 (H.264), muted, ideally < 5 MB
+  poster: /assets/video/hero-poster.jpg  # shown while loading and for reduced motion
+  headline: Computational Dynamics Lab   # defaults to the site title
+  tagline: >-
+    We simulate how patterns form, waves travel and fluids mix, and we
+    develop the numerical methods that make those simulations possible.
+  buttons:
+    - label: Explore our research
+      url: /research/
+    - label: Browse publications
+      url: /publications/
+  # Small caption describing what the background shows. Delete to hide it.
+  caption: "Background: Gray–Scott reaction–diffusion, F = 0.014, k = 0.054"
+  # Colour scale for the background video. Delete this block to hide it.
+  colorbar:
+    label: Concentration of v
+    min: "0"
+    max: "0.42"
+    colors: ["#0C1430", "#203478", "#1A788C", "#5ABEA5", "#E1F5DC"]
+
+# ----------------------------------------------------------------------------
+#  Contact details (used on the Contact page and in the footer)
+# ----------------------------------------------------------------------------
+contact:
+  email: dynamics-lab@example.edu
+  phone: "+1 555 0100"
+  address: |
+    Room 4.12, Mathematics Building
+    123 University Avenue
+    Example City, EX 12345
+  # Map on the Contact page (OpenStreetMap). Delete to hide the map.
+  map:
+    lat: 47.3763
+    lon: 8.5477
+    zoom_span: 0.006   # smaller = more zoomed in
+  # Optional contact form. GitHub Pages cannot process forms itself; paste a
+  # Formspree (https://formspree.io) endpoint here to enable one.
+  form_endpoint: ""
+
+# Footer links. Delete any you don't use.
+social:
+  github: https://github.com/your-org
+  scholar: https://scholar.google.com/
+  youtube: https://www.youtube.com/
+
+# Labels for publication types (the `type:` field in _data/publications.yml).
+# Only types that appear in your data are shown as filters.
+publication_types:
+  journal: Journal articles
+  conference: Conference papers
+  preprint: Preprints
+  book: Books and chapters
+  thesis: Theses
+
+# ----------------------------------------------------------------------------
+#  Build settings — usually no need to change
+# ----------------------------------------------------------------------------
+markdown: kramdown
+kramdown:
+  input: GFM
+permalink: pretty
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - vendor/
+  - .bundle/
+  - .jekyll-cache/

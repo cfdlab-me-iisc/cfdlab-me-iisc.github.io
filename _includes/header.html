@@ -1,0 +1,23 @@
+<header class="site-header" data-header>
+  <div class="site-header__inner">
+    <a class="brand{% if site.short_title %} brand--has-short{% endif %}" href="{{ '/' | relative_url }}">
+      {% include logo.svg %}
+      <span class="brand__name">{{ site.title }}</span>
+      {%- if site.short_title %}<span class="brand__short" aria-hidden="true">{{ site.short_title }}</span>{% endif %}
+    </a>
+    <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+      {% include icon.html name="menu" %}<span class="nav-toggle__label">Menu</span>
+    </button>
+    <nav class="site-nav" id="site-nav" aria-label="Main" data-nav>
+      <ul class="site-nav__list">
+        {%- for link in site.data.navigation %}
+        <li><a href="{{ link.url | relative_url }}"{% if page.url == link.url %} aria-current="page"{% endif %}>{{ link.title }}</a></li>
+        {%- endfor %}
+      </ul>
+      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch to dark theme">
+        <span class="theme-toggle__icon theme-toggle__icon--sun">{% include icon.html name="sun" %}</span>
+        <span class="theme-toggle__icon theme-toggle__icon--moon">{% include icon.html name="moon" %}</span>
+      </button>
+    </nav>
+  </div>
+</header>

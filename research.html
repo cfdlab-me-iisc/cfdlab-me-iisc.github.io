@@ -1,0 +1,90 @@
+---
+layout: page
+title: Research
+permalink: /research/
+description: Research projects of the Computational Dynamics Lab, with simulation videos and figures.
+intro: >-
+  Our projects share a common toolkit: nonlinear partial differential
+  equations, careful numerics and a lot of simulation. Select any figure
+  to view it full size.
+---
+{%- assign projects = site.data.research %}
+<div class="container">
+  {%- if projects.size > 2 %}
+  <nav class="project-index" aria-label="Research projects">
+    <ul>
+      {%- for project in projects %}
+      <li><a href="#{{ project.id }}">{{ project.title }}</a></li>
+      {%- endfor %}
+    </ul>
+  </nav>
+  {%- endif %}
+
+  {%- for project in projects %}
+  <article class="project" id="{{ project.id }}" aria-labelledby="{{ project.id }}-title">
+    <figure class="project__figure">
+      {% include media.html media=project.media caption=project.caption %}
+      {%- if project.caption %}<figcaption class="caption">{{ project.caption }}</figcaption>{% endif %}
+      {%- if project.gallery %}
+      <ul class="gallery" aria-label="More figures">
+        {%- for item in project.gallery %}
+        {%- assign thumb = item.poster | default: item.src %}
+        <li>
+          <button type="button" class="gallery__item" data-viewer="{% if item.type == 'video' %}video{% else %}image{% endif %}"
+            data-src="{{ item.src | relative_url }}"{% if item.poster %} data-poster="{{ item.poster | relative_url }}"{% endif %}
+            data-caption="{{ item.caption | strip_newlines | escape }}" data-alt="{{ item.alt | escape }}"
+            aria-label="Enlarge: {{ item.alt | default: item.caption | escape }}">
+            <img src="{{ thumb | relative_url }}" alt="" loading="lazy" decoding="async">
+            {%- if item.type == "video" %}<span class="gallery__play">{% include icon.html name="play" %}</span>{% endif %}
+          </button>
+        </li>
+        {%- endfor %}
+      </ul>
+      {%- endif %}
+    </figure>
+
+    <div class="project__text">
+      <h2 class="project__title" id="{{ project.id }}-title">{{ project.title }}</h2>
+      <div class="prose">{% include markdown.html text=project.description %}</div>
+
+      <dl class="facts">
+        {%- if project.keywords %}
+        <div class="facts__row">
+          <dt>Keywords</dt>
+          <dd><ul class="keywords">{% for k in project.keywords %}<li>{{ k }}</li>{% endfor %}</ul></dd>
+        </div>
+        {%- endif %}
+        {%- if project.people %}
+        <div class="facts__row">
+          <dt>People</dt>
+          <dd>{{ project.people | array_to_sentence_string }}</dd>
+        </div>
+        {%- endif %}
+        {%- if project.publications %}
+        <div class="facts__row">
+          <dt>Publications</dt>
+          <dd>
+            <ul class="related">
+              {%- for key in project.publications %}
+              {%- assign pub = site.data.publications | where: "id", key | first %}
+              {%- if pub %}
+              <li><a href="{{ '/publications/' | relative_url }}#{{ pub.id }}">{{ pub.title }}</a> <span class="related__year">({{ pub.year }})</span></li>
+              {%- endif %}
+              {%- endfor %}
+            </ul>
+          </dd>
+        </div>
+        {%- endif %}
+      </dl>
+
+      {%- if project.links %}
+      <div class="project__links">
+        {%- for link in project.links %}
+        <a class="button button--outline" href="{{ link.url | relative_url }}">{{ link.label }}</a>
+        {%- endfor %}
+      </div>
+      {%- endif %}
+    </div>
+  </article>
+  {%- endfor %}
+</div>

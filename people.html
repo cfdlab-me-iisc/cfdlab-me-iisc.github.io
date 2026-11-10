@@ -1,0 +1,55 @@
+---
+layout: page
+title: People
+permalink: /people/
+description: Members and alumni of the Computational Dynamics Lab.
+intro: >-
+  We are mathematicians, physicists and engineers who share an interest in
+  how complex behaviour emerges from simple rules.
+join: >-
+  We welcome applications from prospective PhD students and postdocs with a
+  background in applied mathematics, physics or engineering. Programming
+  experience in Python, Julia or C++ is helpful. Write to us with a CV and a
+  short note about the problems that interest you, or see the
+  [Contact page](/contact/) for current openings.
+---
+<div class="container">
+  {%- for section in site.data.people.sections %}
+  <section class="people-section" aria-labelledby="people-{{ forloop.index }}">
+    <h2 class="section__title" id="people-{{ forloop.index }}">{{ section.title }}</h2>
+    <div class="{% if section.feature %}people-feature{% else %}people-grid{% endif %}">
+      {%- for member in section.members %}
+      {% include person.html person=member index=forloop.index feature=section.feature %}
+      {%- endfor %}
+    </div>
+  </section>
+  {%- endfor %}
+
+  {%- assign alumni = site.data.people.alumni %}
+  {%- if alumni.size > 0 %}
+  <section class="people-section" aria-labelledby="alumni-title">
+    <h2 class="section__title" id="alumni-title">Alumni</h2>
+    <table class="alumni">
+      <thead>
+        <tr><th scope="col">Name</th><th scope="col">In the lab</th><th scope="col">Now</th></tr>
+      </thead>
+      <tbody>
+        {%- for a in alumni %}
+        <tr>
+          <th scope="row">{% if a.url %}<a href="{{ a.url }}">{{ a.name }}</a>{% else %}{{ a.name }}{% endif %}</th>
+          <td data-label="In the lab">{{ a.position }}</td>
+          <td data-label="Now">{{ a.now }}</td>
+        </tr>
+        {%- endfor %}
+      </tbody>
+    </table>
+  </section>
+  {%- endif %}
+
+  {%- if page.join %}
+  <section class="join" aria-labelledby="join-title">
+    <h2 class="section__title" id="join-title">Join the lab</h2>
+    <div class="prose">{% include markdown.html text=page.join %}</div>
+  </section>
+  {%- endif %}
+</div>

@@ -1,0 +1,106 @@
+# ----------------------------------------------------------------------------
+#  People. Each section becomes a heading on the People page, in this order.
+#
+#  name   Full name, without titles
+#  role   Position, shown under the name
+#  photo  Optional. Put the image in assets/img/people/ and write its path,
+#         e.g. /assets/img/people/mira-halvorsen.jpg
+#         Portrait (4:5) crops work best, about 600 × 750 px.
+#         Without a photo, the person's initials are shown instead.
+#  bio    One to three sentences
+#  links  Any of: email, website, scholar, orcid (just the ID), github
+#         (just the username), linkedin, cv
+#
+#  In a section, `feature: true` gives each person a larger layout
+#  (used here for the group leader).
+# ----------------------------------------------------------------------------
+
+sections:
+  - title: Group leader
+    feature: true
+    members:
+      - name: Mira Halvorsen
+        role: Associate Professor of Applied Mathematics
+        # photo: /assets/img/people/mira-halvorsen.jpg
+        bio: >-
+          Mira works on nonlinear partial differential equations and the
+          numerical methods used to simulate them. Before starting the lab in
+          2019 she was a postdoctoral fellow in computational physics. She
+          teaches the department's graduate course on scientific computing.
+        links:
+          email: m.halvorsen@example.edu
+          website: https://example.com
+          scholar: https://scholar.google.com/
+          orcid: 0000-0000-0000-0000
+          github: your-username
+          cv: https://example.com/cv.pdf
+
+  - title: Postdoctoral researchers
+    members:
+      - name: Tomás Ibarra
+        role: Postdoctoral researcher
+        bio: >-
+          Develops GPU solvers for wave propagation, with a focus on
+          absorbing boundary conditions.
+        links:
+          email: t.ibarra@example.edu
+          github: your-username
+      - name: Aiko Tanaka
+        role: Postdoctoral researcher
+        bio: >-
+          Studies chaotic mixing and Lagrangian transport, combining
+          simulations with rotating-tank experiments.
+        links:
+          email: a.tanaka@example.edu
+          scholar: https://scholar.google.com/
+
+  - title: Doctoral students
+    members:
+      - name: Lena Okafor
+        role: PhD student, since 2022
+        bio: >-
+          Works on pattern formation on curved and growing surfaces.
+        links:
+          email: l.okafor@example.edu
+          website: https://example.com
+      - name: Rahul Menon
+        role: PhD student, since 2023
+        bio: >-
+          Studies wave trapping in disordered waveguides.
+        links:
+          email: r.menon@example.edu
+      - name: Sofia Lindqvist
+        role: PhD student, since 2024
+        bio: >-
+          Designs mixing protocols for microfluidic devices.
+        links:
+          email: s.lindqvist@example.edu
+      - name: Daniel Asante
+        role: PhD student, since 2024
+        bio: >-
+          Builds data-driven methods for detecting coherent structures.
+        links:
+          email: d.asante@example.edu
+          github: your-username
+
+  - title: Master's and undergraduate students
+    members:
+      - name: Jonas Weber
+        role: Research assistant
+        bio: >-
+          Extends the lab's continuation code to three-dimensional patterns.
+        links:
+          email: j.weber@example.edu
+
+# Former members, shown as a compact list at the bottom of the page
+alumni:
+  - name: Priya Raman
+    position: PhD, 2023
+    now: Postdoctoral fellow, Example Institute of Technology
+    url: https://example.com
+  - name: Marco Bianchi
+    position: Postdoctoral researcher, 2020–2023
+    now: Data scientist, a climate analytics company
+  - name: Hannah Fischer
+    position: MSc, 2022
+    now: PhD student, Example University

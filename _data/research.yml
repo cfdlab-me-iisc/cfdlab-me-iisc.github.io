@@ -1,0 +1,153 @@
+# ----------------------------------------------------------------------------
+#  Research projects, shown in this order on the Research page.
+#
+#  id           Short name used in links, e.g. /research/#pattern-formation
+#  title        Project title
+#  summary      One or two sentences, used on the home page
+#  description  Longer text. Markdown works: **bold**, *italic*, [links](https://...)
+#  media        The main figure. Pick one type:
+#                 type: video    src: /assets/research/clip.mp4   poster: /assets/research/clip.jpg
+#                 type: image    src: /assets/research/figure.jpg
+#                 type: youtube  id: dQw4w9WgXcQ        (the part after watch?v=)
+#                 type: vimeo    id: 123456789
+#               Always add `alt:`, a plain description of what the media shows.
+#               Videos are shown at 16:9 unless you add e.g. `aspect: 4 / 3`.
+#  caption      Figure caption shown under the media (model, parameters, resolution...)
+#  gallery      Optional extra images or videos, shown as thumbnails that open full size
+#  keywords     Short topic list
+#  people       Names exactly as written in _data/people.yml
+#  publications ids from _data/publications.yml; shown as linked titles
+#  links        Any extra buttons (code, data, talk...)
+#  featured     true = also shown on the home page (the first three are used)
+#
+#  Keep videos short (5–15 s), muted, H.264 MP4, ideally under 10 MB each.
+#  See README.md for a one-line ffmpeg command that prepares them.
+# ----------------------------------------------------------------------------
+
+- id: pattern-formation
+  title: Pattern formation in reaction–diffusion systems
+  summary: >-
+    How two interacting chemicals produce spots, stripes and labyrinths,
+    and which of those patterns survive noise and changing domains.
+  description: |
+    Reaction–diffusion models describe two or more species that react locally
+    and spread at different rates. Small differences in those rates are enough
+    to turn a uniform mixture into stable spots, stripes or travelling waves,
+    an idea first proposed by Alan Turing in 1952.
+
+    We map the full range of patterns produced by the Gray–Scott model and
+    its extensions, study how patterns respond to growing and curved domains,
+    and build GPU solvers that run parameter sweeps of thousands of simulations
+    overnight.
+  media:
+    type: video
+    src: /assets/research/pattern-formation.mp4
+    poster: /assets/research/pattern-formation.jpg
+    alt: Labyrinth-like stripes growing outward from a few seed points until they fill the domain.
+  caption: >-
+    Labyrinth patterns growing from twelve seeds. Gray–Scott model with
+    F = 0.029, k = 0.057 on a 320 × 180 periodic grid.
+  gallery:
+    - type: image
+      src: /assets/research/rd-spots.jpg
+      alt: Isolated round spots on a dark background.
+      caption: "Self-replicating spots, F = 0.035, k = 0.065."
+    - type: image
+      src: /assets/research/rd-holes.jpg
+      alt: A light field punctured by a near-hexagonal array of dark holes.
+      caption: "Hexagonal holes, F = 0.039, k = 0.058."
+    - type: image
+      src: /assets/research/rd-mazes.jpg
+      alt: Densely packed winding stripes forming a maze.
+      caption: "Mazes, F = 0.029, k = 0.057."
+  keywords: [Turing patterns, nonlinear PDEs, bifurcation analysis, GPU computing]
+  people: [Mira Halvorsen, Lena Okafor, Jonas Weber]
+  publications: [okafor2026curved, halvorsen2025atlas]
+  links:
+    - label: Solver on GitHub
+      url: https://github.com/your-org/morphon
+  featured: true
+
+- id: wave-propagation
+  title: Waves in structured media
+  summary: >-
+    Interference, diffraction and trapping of waves in materials with
+    built-in geometry, from acoustic metamaterials to optical lattices.
+  description: |
+    When a wave meets an obstacle comparable in size to its wavelength,
+    the result depends sensitively on geometry. We simulate the scalar and
+    elastic wave equations in media with periodic or random structure,
+    using high-order finite differences with absorbing boundary layers.
+
+    Current work focuses on designing structures that steer or trap waves
+    and on fast solvers for the very large three-dimensional versions of
+    these problems.
+  media:
+    type: video
+    src: /assets/research/wave-interference.mp4
+    poster: /assets/research/wave-interference.jpg
+    alt: A plane wave passing through two narrow slits in a wall and spreading into overlapping circular wavefronts.
+  caption: >-
+    A plane wave passing through a double slit. Scalar wave equation,
+    second-order finite differences, absorbing layers on all four sides.
+  keywords: [wave equation, metamaterials, absorbing boundaries]
+  people: [Tomás Ibarra, Rahul Menon]
+  publications: [ibarra2026pml, menon2025trapping]
+  featured: true
+
+- id: mixing
+  title: Transport and mixing in unsteady flows
+  summary: >-
+    Tracking how a periodically forced flow stretches and folds dye,
+    and what that tells us about mixing in oceans and microfluidic devices.
+  description: |
+    Even simple, smooth velocity fields can mix fluids chaotically once they
+    change in time. We study these flows from the point of view of the fluid
+    parcels themselves (the Lagrangian view), following how blobs of dye are
+    stretched into thin filaments and folded back on themselves.
+
+    The video shows the *double gyre*, a standard test case in which two
+    counter-rotating cells exchange fluid as the boundary between them
+    oscillates.
+  media:
+    type: video
+    src: /assets/research/double-gyre.mp4
+    poster: /assets/research/double-gyre.jpg
+    aspect: 2 / 1   # optional; videos default to 16 / 9
+    alt: Two colours of dye being stretched into thin interleaved filaments by two rotating cells.
+  caption: >-
+    Dye advected by the periodically forced double gyre over two forcing
+    periods (A = 0.1, ε = 0.25, ω = 2π/10).
+  keywords: [chaotic advection, Lagrangian transport, microfluidics]
+  people: [Aiko Tanaka, Sofia Lindqvist]
+  publications: [tanaka2025gyre]
+  featured: true
+
+- id: coherent-structures
+  title: Finding hidden structure in flows
+  summary: >-
+    Locating the invisible barriers that organise transport in a flow,
+    using finite-time Lyapunov exponents.
+  description: |
+    Although a flow can look disordered, transport is often organised by a
+    small number of moving curves that fluid cannot cross. Those curves show
+    up as ridges in the finite-time Lyapunov exponent (FTLE) field, which
+    measures how quickly neighbouring fluid parcels separate.
+
+    We develop methods to compute these structures from sparse, noisy
+    measurements such as drifter tracks and particle image velocimetry.
+  media:
+    type: image
+    src: /assets/research/ftle.jpg
+    alt: A dark field crossed by thin bright curved ridges that spiral inward from the top and bottom.
+  caption: >-
+    Forward FTLE field of the double gyre, integration time T = 15,
+    computed on a 1000 × 500 grid of initial positions.
+  keywords: [coherent structures, FTLE, data-driven methods]
+  people: [Aiko Tanaka, Daniel Asante]
+  publications: [asante2026sparse]
+  # Example of a YouTube video instead of a local file:
+  # media:
+  #   type: youtube
+  #   id: VIDEO_ID
+  #   alt: Talk recording

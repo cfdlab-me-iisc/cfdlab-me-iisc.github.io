@@ -1,0 +1,140 @@
+# ----------------------------------------------------------------------------
+#  Publications. Entries are grouped by year automatically; within a year
+#  they appear in the order written here, so put the newest first.
+#
+#  id        Unique short name, used for links like /publications/#okafor2026curved
+#            and by the `publications:` lists in _data/research.yml
+#  type      journal | conference | preprint | book | thesis
+#            (labels are set in _config.yml → publication_types)
+#  authors   Wrap lab members in **double asterisks** to highlight them
+#  venue     Journal, conference or publisher
+#  details   Optional volume, pages or article number
+#  selected  true = shown under "Selected publications" on the home page
+#  note      Optional short remark, e.g. an award
+#  Links (all optional): url, doi, arxiv, pdf, code, data, video, slides
+#    doi and arxiv take just the identifier; the others take full URLs or
+#    paths to files in this repository, e.g. /assets/papers/paper.pdf
+#  bibtex    Optional; adds a "BibTeX" button that shows and copies it
+#
+#  The entries below are placeholders: their DOIs and arXiv numbers do not exist.
+# ----------------------------------------------------------------------------
+
+- id: okafor2026curved
+  type: journal
+  title: Turing patterns on growing curved surfaces
+  authors: "**L. Okafor**, **J. Weber**, **M. Halvorsen**"
+  venue: Physical Review E
+  details: "113, 024205"
+  year: 2026
+  doi: 10.0000/example.2026.024205
+  arxiv: "2600.00011"
+  code: https://github.com/your-org/morphon
+  selected: true
+  bibtex: |
+    @article{okafor2026curved,
+      title   = {Turing patterns on growing curved surfaces},
+      author  = {Okafor, Lena and Weber, Jonas and Halvorsen, Mira},
+      journal = {Physical Review E},
+      volume  = {113},
+      pages   = {024205},
+      year    = {2026}
+    }
+
+- id: asante2026sparse
+  type: preprint
+  title: Coherent structures from sparse drifter data
+  authors: "**D. Asante**, **A. Tanaka**, R. Silva, **M. Halvorsen**"
+  venue: arXiv preprint
+  year: 2026
+  arxiv: "2600.00027"
+  code: https://github.com/your-org/gyreflow
+
+- id: ibarra2026pml
+  type: conference
+  title: High-order absorbing layers for wave simulations on GPUs
+  authors: "**T. Ibarra**, **R. Menon**, **M. Halvorsen**"
+  venue: Proceedings of the International Conference on Computational Science
+  details: "pp. 112–126"
+  year: 2026
+  doi: 10.0000/example.2026.112
+  slides: https://example.com/slides.pdf
+  video: https://www.youtube.com/
+  note: Best paper award
+
+- id: halvorsen2025atlas
+  type: journal
+  title: An atlas of Gray–Scott patterns from ten thousand simulations
+  authors: "**M. Halvorsen**, **L. Okafor**, K. Brandt"
+  venue: SIAM Journal on Applied Dynamical Systems
+  details: "24(3), 1810–1842"
+  year: 2025
+  doi: 10.0000/example.2025.1810
+  arxiv: "2600.00003"
+  data: https://zenodo.org/
+  selected: true
+  bibtex: |
+    @article{halvorsen2025atlas,
+      title   = {An atlas of Gray--Scott patterns from ten thousand simulations},
+      author  = {Halvorsen, Mira and Okafor, Lena and Brandt, Karl},
+      journal = {SIAM Journal on Applied Dynamical Systems},
+      volume  = {24},
+      number  = {3},
+      pages   = {1810--1842},
+      year    = {2025}
+    }
+
+- id: tanaka2025gyre
+  type: journal
+  title: Mixing efficiency of periodically forced cellular flows
+  authors: "**A. Tanaka**, **S. Lindqvist**, **M. Halvorsen**"
+  venue: Journal of Fluid Mechanics
+  details: "1004, A17"
+  year: 2025
+  doi: 10.0000/example.2025.A17
+  arxiv: "2600.00019"
+  video: https://www.youtube.com/
+  selected: true
+
+- id: menon2025trapping
+  type: journal
+  title: Trapped modes in randomly perturbed waveguides
+  authors: "**R. Menon**, **T. Ibarra**"
+  venue: Wave Motion
+  details: "134, 103410"
+  year: 2025
+  doi: 10.0000/example.2025.103410
+
+- id: weber2024thesis
+  type: thesis
+  title: Numerical continuation of spot patterns in reaction–diffusion systems
+  authors: "**J. Weber**"
+  venue: MSc thesis, Example University
+  year: 2024
+  pdf: https://example.com/thesis.pdf
+
+- id: halvorsen2024chapter
+  type: book
+  title: "Simulating pattern formation: a practical introduction"
+  authors: "**M. Halvorsen**"
+  venue: "In: Methods in Nonlinear Science, Example Academic Press"
+  details: "pp. 45–88"
+  year: 2024
+  doi: 10.0000/example.2024.45
+
+- id: raman2023lcs
+  type: journal
+  title: Lagrangian coherent structures in a laboratory rotating tank
+  authors: "**P. Raman**, **A. Tanaka**, H. Moreau, **M. Halvorsen**"
+  venue: Physical Review Fluids
+  details: "8, 064501"
+  year: 2023
+  doi: 10.0000/example.2023.064501
+  arxiv: "2600.00031"
+
+- id: raman2023thesis
+  type: thesis
+  title: Transport barriers in experimental and simulated flows
+  authors: "**P. Raman**"
+  venue: PhD thesis, Example University
+  year: 2023
+  pdf: https://example.com/raman-thesis.pdf
