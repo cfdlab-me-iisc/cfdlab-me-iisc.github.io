@@ -5,12 +5,11 @@
 #  After editing this file, restart `jekyll serve` (it is not live-reloaded).
 # ----------------------------------------------------------------------------
 
-title: Computational Dynamics Lab
-# short_title: CDL   # optional; replaces the title in the header on narrow phones
+title: Computational Fluid Dynamics Lab
+short_title: CFD Lab   # optional; replaces the title in the header on narrow phones
 description: >-
-  We build simulations and theory for pattern formation, wave propagation
-  and transport in complex systems.
-institution: Department of Applied Mathematics, Example University
+  We seek to understand the fundamental and physical mechanics of fluid flows over a wide spectrum of spatio-temporal scales.
+institution: Department of Mechanical Engineering, Indian Institute of Science
 lang: en
 
 # GitHub Pages addresses
