@@ -76,13 +76,11 @@ sections:
           Designs mixing protocols for microfluidic devices.
         links:
           email: s.lindqvist@example.edu
-      - name: Daniel Asante
-        role: PhD student, since 2024
-        bio: >-
-          Builds data-driven methods for detecting coherent structures.
+      - name: Niel James
+        role: M.Tech student, since 2025
+        # bio: >-
         links:
-          email: d.asante@example.edu
-          github: your-username
+          email: nieljames@iisc.ac.in
 
   - title: Master's and undergraduate students
     members:
